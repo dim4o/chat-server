@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name = "message")
 public class Message {
@@ -20,6 +21,7 @@ public class Message {
 
     @NotNull
     @NotEmpty
+    @Size(max = 160)
     private String payload;
 
     private Date createdAt;
@@ -29,6 +31,11 @@ public class Message {
 
     public Message(String payload) {
         this.payload = payload;
+    }
+    
+    public Message(String payload, MessageType type) {
+        this(payload);
+        this.type = type;
     }
 
     public Long getId() {
@@ -61,5 +68,11 @@ public class Message {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Message [id=" + id + ", type=" + type + ", payload=" + payload + ", createdAt="
+                + createdAt + "]";
     }
 }

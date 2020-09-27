@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:8-jdk-alpine
 WORKDIR /
-ADD chat-server-new-0.0.1.jar chat-server-new-0.0.1.jar
-CMD java -jar chat-server-new-0.0.1.jar
+ADD chat-server-0.0.1.jar chat-server-0.0.1.jar
+CMD java -jar chat-server-0.0.1.jar
